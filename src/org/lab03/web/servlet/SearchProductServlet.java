@@ -26,6 +26,11 @@ public class SearchProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	// Set extended title Content-Security-Policy and X-XSS-Protection
+//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
     	Connection conn = MyUtils.getStoredConnection(request);
         String code = (String) request.getParameter("code");
         String errorString = null;
@@ -61,6 +66,11 @@ public class SearchProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	// Set extended title Content-Security-Policy and X-XSS-Protection
+//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
         doGet(request, response);
     }
 }

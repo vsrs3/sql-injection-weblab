@@ -8,6 +8,7 @@
 <session-config>
     <session-timeout>15</session-timeout>
     <cookie-config>
+    	<!-- <http-only>true</http-only> --> <!--Global Configuration for HTTP Only -->
     </cookie-config>
     <tracking-mode>COOKIE</tracking-mode>
  </session-config>

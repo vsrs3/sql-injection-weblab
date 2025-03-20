@@ -27,6 +27,10 @@ public class DeleteProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	// Set extended title Content-Security-Policy and X-XSS-Protection
+//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
     	HttpSession session = request.getSession();
         
         // Check User has logged on
@@ -74,6 +78,11 @@ public class DeleteProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	// Set extended title Content-Security-Policy and X-XSS-Protection
+//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
         doGet(request, response);
     }
  

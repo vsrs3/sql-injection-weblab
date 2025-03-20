@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.lab03.web.beans.Product;
 import org.lab03.web.utils.DBUtils;
@@ -28,8 +29,14 @@ public class SearchProductServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// Set extended title Content-Security-Policy and X-XSS-Protection
-//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
-//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
+    	// Set attribute HTTPOnly
+    	HttpSession session = request.getSession();
+    	String jsessionId = session.getId();
+    	String cookie = "JSESSIONID=" + jsessionId + "; Path=/; HttpOnly";
+    	response.setHeader("Set-Cookie", cookie);
     	
     	Connection conn = MyUtils.getStoredConnection(request);
         String code = (String) request.getParameter("code");
@@ -68,8 +75,14 @@ public class SearchProductServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// Set extended title Content-Security-Policy and X-XSS-Protection
-//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
-//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	
+    	// Set attribute HTTPOnly
+    	HttpSession session = request.getSession();
+    	String jsessionId = session.getId();
+    	String cookie = "JSESSIONID=" + jsessionId + "; Path=/; HttpOnly";
+    	response.setHeader("Set-Cookie", cookie);
     	
         doGet(request, response);
     }

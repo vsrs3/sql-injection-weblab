@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
  
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,10 +33,14 @@ public class CreateProductServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// Set extended title Content-Security-Policy and X-XSS-Protection
-//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
-//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
     	
+    	// Set attribute HTTPOnly
     	HttpSession session = request.getSession();
+    	String jsessionId = session.getId();
+    	String cookie = "JSESSIONID=" + jsessionId + "; Path=/; HttpOnly";
+    	response.setHeader("Set-Cookie", cookie);
         
         // Check User has logged on
         UserAccount loginedUser = MyUtils.getLoginedUser(session);
@@ -59,10 +65,14 @@ public class CreateProductServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// Set extended title Content-Security-Policy and X-XSS-Protection
-//    	response.setHeader("Content-Security-Policy", "script-src 'self';");
-//    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
+    	response.setHeader("Content-Security-Policy", "script-src 'self';");
+    	response.setHeader("X-XSS-Protection", "1: mode=block"); 
     	
+    	// Set attribute HTTPOnly
     	HttpSession session = request.getSession();
+    	String jsessionId = session.getId();
+    	String cookie = "JSESSIONID=" + jsessionId + "; Path=/; HttpOnly";
+    	response.setHeader("Set-Cookie", cookie);
         
         // Check User has logged on
         UserAccount loginedUser = MyUtils.getLoginedUser(session);

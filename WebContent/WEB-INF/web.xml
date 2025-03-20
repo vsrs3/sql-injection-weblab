@@ -12,6 +12,18 @@
     </cookie-config>
     <tracking-mode>COOKIE</tracking-mode>
  </session-config>
+ 
+  <!-- Using SecurityHeadersFilter -->
+ <filter>
+    <filter-name>securityHeadersFilter</filter-name>
+    <filter-class>org.lab03.web.filter.SecurityHeadersFilter</filter-class>
+</filter>
+ 
+ <!-- Using xssFilter -->
+<filter-mapping>
+    <filter-name>xssFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
   
      <filter-mapping>
        <filter-name>jdbcFilter</filter-name>
